@@ -1,0 +1,23 @@
+
+th{
+    color: orange;
+    text-align: center;
+}
+
+tr:nth-child(2n+1)
+{
+    background-color:orchid;
+}
+tr:nth-child(2n)
+{
+    background-color:orange;
+}
+.text-center{
+    text-align:center;
+}
+img{
+    width: 100%;
+}
+table{
+    width: 100%;
+}

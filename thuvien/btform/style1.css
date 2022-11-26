@@ -1,0 +1,25 @@
+.blue{
+    text-align: right;
+    color: blue;
+    font-weight: bolder;
+}
+.brownb{
+    text-align: right;
+    color: brown;
+    font-weight: bolder;
+}
+.brown{
+    text-align: left;
+    color: rgb(199, 82, 82);
+}
+.bluen{
+    color: rgb(144, 172, 231);
+}
+.back{
+    color: blueviolet;
+    text-decoration: underline;
+    text-transform: initial;
+}
+.vivo{
+    margin: 0 auto;
+}
