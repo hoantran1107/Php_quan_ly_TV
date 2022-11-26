@@ -12,6 +12,7 @@ $dbname = "qlthuvien";
 //cookies
 $cookie_admin='siteAuth';
 $cookie_user='siteAuth';
+
 $cookie_time=(3600 * 24); // 1 ngày
 
 $conn = new mysqli($hostname, $username, $password, $dbname);
