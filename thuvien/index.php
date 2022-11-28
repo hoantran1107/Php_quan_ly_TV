@@ -11,6 +11,7 @@
 <!-- Book search section ends here -->
 
 <?php
+//hiện thị thông báo đăng nhập thành công và các thông báo khác 1 lần
 if(isset($_SESSION['muonsach']))
 {
     echo $_SESSION['muonsach'];

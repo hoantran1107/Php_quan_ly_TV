@@ -6,7 +6,8 @@
         {
             if(isset($_COOKIE[$cookie_admin]))
             {
-                parse_str($_COOKIE[$cookie_admin]);
+                parse_str($_COOKIE[$cookie_admin],$output);
+                // var_dump($_COOKIE[$cookie_admin]);
                 $sqlck = "SELECT * FROM nhan_vien WHERE email_nv='$usernv' AND pwd='$passnv' ";
                 $resck=mysqli_query($conn,$sqlck);
                 if($resck)

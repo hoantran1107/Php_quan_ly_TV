@@ -7,23 +7,23 @@
 <table style="width: 65%;" align="center" class="info">
     <tr>
         <td>Họ và tên: </td>
-        <td>Lê Thị Hồng Nhung</td>
+        <td>Trần Khải Hoàn</td>
     </tr>
     <tr>
         <td>MSSV: </td>
-        <td>61134137</td>
+        <td>59130790</td>
     </tr>
     <tr>
         <td>Lớp học phần: </td>
-        <td>60.CNTT-2</td>
+        <td>61.CNTT-2</td>
     </tr>
     <tr>
         <td>Email: </td>
-        <td>nhung.lth.61cntt@ntu.edu.vn</td>
+        <td>hoan.tk.59cntt@ntu.edu.vn</td>
     </tr>
     <tr>
         <td>Link git: </td>
-        <td><a href="https://github.com/LeThiHong-Nhung/libraryproject.git">https://github.com/LeThiHong-Nhung/libraryproject.git</a></td>
+        <td><a href=""></a></td>
     </tr>
 </table>
 </div>

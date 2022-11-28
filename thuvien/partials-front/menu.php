@@ -47,7 +47,8 @@ include('login-check-sv.php');
                     </li>
                     <?php
                     if(isset($_SESSION['usersv']))
-                   {$id=$_SESSION['usersv'];                
+                    {
+                    $id=$_SESSION['usersv'];                
                     $sql="SELECT * FROM sinh_vien WHERE ma_sv='$id' ";
                     $res= mysqli_query($conn, $sql);
                     $count=mysqli_num_rows($res);

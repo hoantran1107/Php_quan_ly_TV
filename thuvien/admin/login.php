@@ -40,7 +40,7 @@
     </form>
     <!-- Login Form Ends Here -->
 
-    <p class="text-center">Created by <a href="#">Lê Thị Hồng Nhung</a></p>
+    <p class="text-center">Created by <a href="#">Group PHP</a></p>
     </div>
     </div>
 </section>
@@ -52,6 +52,7 @@
 if(isset($_POST['submit']))
 {
     //lay du lieu tu form dang nhap
+    //mysqli_real_escape_string thay đổi các kí tự đặt biệt để phù hợp với câu lệnh sql
     $usernv = mysqli_real_escape_string($conn,$_POST['username']);
     $raw_pass=md5($_POST['password']);
     $pass = mysqli_real_escape_string($conn,$raw_pass);
@@ -68,7 +69,8 @@ if(isset($_POST['submit']))
     if($count == 1) {
         //dang nhap thanh cong
         $_SESSION['login']="<div class='success'>Đăng nhập thành công!</div>";
-        $_SESSION['user']=$usernv;//kiem tra neu user da dang nhap hoac neu khong logout se unset no
+        $_SESSION['user']=$usernv;
+        //kiem tra neu user da dang nhap hoac neu khong logout se unset no
         //
         //session_destroy();
         if($check==1){

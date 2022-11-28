@@ -6,7 +6,7 @@
         {
             if(isset($_COOKIE[$cookie_user]))
             {
-                parse_str($_COOKIE[$cookie_user]);
+                parse_str($_COOKIE[$cookie_user],$output);
                 $sqlck = "SELECT * FROM sinh_vien WHERE ma_sv='$ma_sv' AND pwd_sv='$pwd_sv' ";
                 $resck=mysqli_query($conn,$sqlck);
                 if($resck)
