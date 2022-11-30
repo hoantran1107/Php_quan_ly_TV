@@ -15,6 +15,11 @@
         echo $_SESSION['signin'];
         unset($_SESSION['signin']);
     }
+    if (isset($_SESSION['not-match-pwd']))
+    {
+        echo $_SESSION['not-match-pwd'];
+        unset($_SESSION['not-match-pwd']);
+    }
     ?>
     <!-- Signin Form Starts Here -->
     <section class="book-search">
@@ -29,7 +34,7 @@
                     <input type="text" name="hoten_sv" placeholder="VD: Nguyễn Văn A" class="input-responsive" required>
 
                     <div class="order-label">MSSV</div>
-                    <input type="number" name="ma_sv" placeholder="VD: 61234567" class="input-responsive" required>
+                    <input type="number" name="ma_sv" placeholder="VD: 61234567" class="input-responsive" value="<?php echo isset($id) ? $id : ""?>" required>
                     
                     <div class="order-label">Giới tính</div>
                     <input type="radio" name="gioitinh_sv" value="Nam" class="input-responsive" required>Nam
@@ -45,7 +50,7 @@
                     <input type="text" name="khoa" placeholder="VD: CNTT" class="input-responsive" required>
 
                     <div class="order-label">Email</div>
-                    <input type="email" name="email" placeholder="VD: Exmaple@gmail.com" class="input-responsive" required>
+                    <input type="email" name="email_sv" placeholder="VD: Exmaple@gmail.com" class="input-responsive" value="<?php echo isset($email) ? $email : "" ?>" required>
 
                     <div class="order-label">Mật khẩu</div>
                     <input type="password" name="pwd_sv" placeholder="Nhập mật khẩu" class="input-responsive" required>
@@ -59,6 +64,7 @@
 
             </form>
             <?php
+            
             if(isset($_POST['submit']))
             {
                 $id = mysqli_real_escape_string($conn, $_POST['ma_sv']);
@@ -75,7 +81,15 @@
 
                 if($pwd==$confirm)
                 {
-                //cau truy van
+                $sqlkt = "SELECT * from sinh_vien Where ma_sv = '$id'";
+                $query = mysqli_query($conn,$sqlkt);
+                $countkt = mysqli_num_rows($query);
+                $sqlkt1 = "SELECT * from sinh_vien Where email='$email'";
+                $query1 = mysqli_query($conn,$sqlkt1);
+                $countkt1 = mysqli_num_rows($query1);
+
+                if($countkt == 0 && $countkt1 == 0){
+                     //cau truy van
                 $sql = "INSERT INTO sinh_vien SET
                 ma_sv='$id',
                 hoten_sv='$ten',
@@ -94,6 +108,12 @@
                 }
                 }
                 else{
+                    $_SESSION['not-match-pwd']="<div class='error'>Email đã tồn tại hoặc MSSV đã tồn tại!</div>";
+                    header('location:'.SITEURL.'signin-sv.php');
+                }
+               
+                }
+                else{
                     $_SESSION['not-match-pwd']="<div class='error'>Mật khẩu không khớp!</div>";
                     header('location:'.SITEURL.'signin-sv.php');
                 }
@@ -110,7 +130,7 @@
 </html>
 
 <?php
-if(isset($_POST['submit']))
+if(isset($_POST['submit']) and $_SESSION['signin'] =="<div class='success'>Tạo tài khoản sinh viên thành công!</div>")
 {
     //lay du lieu tu form dang nhap
     $ma_sv = $_POST['ma_sv'];
@@ -128,7 +148,6 @@ if(isset($_POST['submit']))
         //dang nhap thanh cong
         $_SESSION['login']="<div class='success text-center'>Đăng nhập thành công!</div>";
         $_SESSION['usersv']=$ma_sv;//kiem tra neu user da dang nhap hoac neu khong logout se unset no
-
         header("location:".SITEURL);
     }
     else{

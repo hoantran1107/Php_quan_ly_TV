@@ -22,6 +22,11 @@
                     echo $_SESSION['no-login-message'];
                     unset($_SESSION['no-login-message']);
                 }
+                if (isset($_SESSION['thaydoimk'])) {
+                    echo $_SESSION['thaydoimk'];
+                    unset($_SESSION['thaydoimk']);
+                }
+                
                 ?>
 
                 <!-- Login Form Starts Here -->
@@ -33,10 +38,13 @@
                         <input type="password" name="pwd_sv" class="input-responsive" placeholder="Nhập mật khẩu"><br><br>
                         <input type="checkbox" name="remember" value="1">
                         <label>Duy trì đăng nhập</label><br><br>
-                        <input type="submit" name="submit" value="Đăng nhập" class="btn btn-primary"><br><br>
+                        <input type="submit" name="submit" value="Đăng nhập" class="btn btn-primary">
+                        <a class="btn btn-primary text-center" href="<?php echo SITEURL."resetpass/resetpass.php"; ?>">Quên mật khẩu</a><br><br>
+                       
                     </fieldset>
                 </form>
                 <!-- Login Form Ends Here -->
+    
                 <h3 class="text-center text-white">Nếu chưa có tài khoản, hãy đăng kí!</h3><br>
                 <!-- chuyển sang trang đăng kí -->
                 <div align="center"><a class="btn btn-primary text-center" href="<?php echo SITEURL; ?>signin-sv.php">Đăng kí</a></div>

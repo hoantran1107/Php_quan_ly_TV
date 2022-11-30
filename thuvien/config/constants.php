@@ -7,7 +7,7 @@ define('SITEURL','http://localhost/thuvien/');
 $hostname = "localhost";
 $username = "root";
 $password = "";
-$dbname = "qlthuvien";
+$dbname = "qlthu_vien";
 
 //cookies
 $cookie_admin='siteAuth';

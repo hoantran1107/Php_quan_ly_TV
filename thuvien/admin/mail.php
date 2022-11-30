@@ -3,18 +3,16 @@ error_reporting(E_ERROR | E_PARSE);
 ob_start();
 //mailer
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../PHPMailer-master/src/Exception.php';
-require '../PHPMailer-master/src/PHPMailer.php';
-require '../PHPMailer-master/src/SMTP.php';
+require '../composer/vendor/autoload.php';
 include('../config/constants.php');
 
 //khoi tao mailer, smtp
-$mail = new PHPMailer();
+$mail = new PHPMailer(true);
 $mail->CharSet = "UTF-8";
 $mail->IsSMTP();
-$mail->Mailer = "smtp";
 
 include('partials/menu.php');
 ?>
