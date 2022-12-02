@@ -1,8 +1,3 @@
-/* 
-Quản lí thư viện
-Lê Thị Hồng Nhung
-2021
-*/
 *{
     margin: 0;
     padding: 0;
@@ -21,14 +16,16 @@ Lê Thị Hồng Nhung
     clear: both;
 }
 .tbl-full{
+    background-color: #fff;
+    border-collapse: collapse;
     width: 100%;
 }
 .tbl-30{
     width: 55%;
 }
 
-table tr th{
-    border-bottom: 1px solid black;
+.tbl-full td, th{
+    border: 1px solid #ff6b81;
     padding: 1%;
     text-align: left;
 }
@@ -47,8 +44,9 @@ table tr td{
 }
 
 .btn-secondary{
+    border-radius: 3px;
     background-color: #7bed9f;
-    padding: 1%;
+    padding: 5%;
     color: black;
     text-decoration: none;
     font-weight: bold;
@@ -107,6 +105,12 @@ form table tr td{
 }
 
 /* CSS for menu */
+.nav{
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    background-color: #fff;
+}
 .menu{
     border-bottom: 1px solid grey;
 }
@@ -146,18 +150,16 @@ form table tr td{
     color: white;
 }
 
-/* CSS for login */
-.login{
-    border: none;
-    width: 35%;
-    margin: 5% auto;
-    padding: 2%;
-    opacity: 0.85;
-}
 
 /* CSS for tab info */
 .info{
     font-size: larger;
     background-color: #f8a5c2;
     color: #6D214F;
+}
+
+.info-member{
+    font-size: 20px;
+    background-color: pink;
+    font-weight: bold;
 }

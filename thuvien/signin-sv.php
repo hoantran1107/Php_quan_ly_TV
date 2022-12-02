@@ -24,12 +24,10 @@
     <!-- Signin Form Starts Here -->
     <section class="book-search">
         <div class="container">
-            
-            <h2 class="text-center text-white">Điền thông tin đăng kí</h2>
 
             <form action="" method="POST" class="order">                
                 <fieldset>
-                    <legend>Thông tin sinh viên</legend>
+                    <h2 class="text-center text-white">Điền thông tin đăng kí</h2>
                     <div class="order-label">Họ và tên</div>
                     <input type="text" name="hoten_sv" placeholder="VD: Nguyễn Văn A" class="input-responsive" required>
 

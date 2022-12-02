@@ -1,5 +1,17 @@
 <?php include('../admin/partials/menu.php') ?>
+<style>
+    th {
+        font-size: 20px;
+        font-weight: 700;
+        background-color: #038a8d;
+        color: #ffffff;
+    }
 
+    table {
+        background-color: #03b0b6;
+
+    }
+</style>
 <div class="main-content">
     <div class="wrapper">
         <h1>BÀI TẬP PHP & FORM</h1>
@@ -11,71 +23,76 @@
         <a href="<?php echo SITEURL; ?>btform/btform3.php" class="btn-primary">Bài 3</a>
         <a href="<?php echo SITEURL; ?>btform/btform4.php" class="btn-primary">Bài 4</a>
         <a href="<?php echo SITEURL; ?>btform/btform5.php" class="btn-primary">Bài 5</a>
-        <a href="<?php echo SITEURL; ?>btform/pheptinh.php" class="btn-primary">Bài 6+7</a>
+        <a href="<?php echo SITEURL; ?>btform/trangnhaplieu.php" class="btn-primary">Bài 6</a>
+        <a href="<?php echo SITEURL; ?>btform/bt7_trangnhaplieu.php" class="btn-primary">Bài 7</a>
         <a href="<?php echo SITEURL; ?>btform/btform8.html" class="btn-primary">Bài 8</a>
+        <a href="<?php echo SITEURL; ?>btform/bt9_index.php" class="btn-primary">Bài 9</a>
 
         <br /><br /><br />
         <?php
-    if(isset($_POST['submit']))
-    {       
-        $batdau=0.0;
-        $ketthuc=0.0;
-        $batdau = $_POST['batdau'];
-        $ketthuc = $_POST['ketthuc'];
-        //$tienthanhtoan=0;
-        if($ketthuc>$batdau)
-        {
-            if($batdau>=10 and $ketthuc>=10 and $batdau<24 and $ketthuc<=24)
-            {
-                if($ketthuc<17)
-                {
-                    $tienthanhtoan = ($ketthuc - $batdau)*20000;
+        if (isset($_POST['submit'])) {
+            $batdau = 0.0;
+            $ketthuc = 0.0;
+            $gkt = trim($_POST['gkt']);
+            $gbd = trim($_POST['gbd']);
+            $ttt = $_POST['ttt'];
+            if (is_numeric($gkt) and is_numeric($gbd) and $gbd > 0 and $gkt > 0) {
+                if ($gkt > $gbd) {
+                    if ($gbd >= 10 and $gkt >= 10 and $gbd < 24 and $gkt <= 24) {
+                        if ($gkt < 17) {
+                            $ttt = ($gkt - $gbd) * 20000;
+                        } elseif ($gbd >= 17) {
+                            $ttt = ($gkt - $gbd) * 45000;
+                        } else {
+                            $ttt = (17 - $gbd) * 20000 + ($gkt - 17) * 45000;
+                        }
+                    } else {
+                        $ttt = "Đây là giờ nghỉ!";
+                    }
+                } else $ttt = " Giờ kết thúc phải > Giờ bắt đầu";
+            } else {
+                if (!is_numeric($gbd) || $gbd < 0) {
+                    $gbd = "Phải nhập vào một số dương";
+                    $ttt = "";
                 }
-                elseif($batdau>=17)
-                {
-                    $tienthanhtoan = ($ketthuc - $batdau)*45000;
+                if (!is_numeric($gkt) || $gkt < 0) {
+                    $gkt = "Phải nhập vào một số dương";
+                    $ttt = "";
                 }
-                else {
-                    $tienthanhtoan = (17-$batdau)*20000 + ($ketthuc-17)*45000;
-                }
-            }
-            else{
-                echo "Đây là giờ nghỉ!";
             }
         }
-    }
-    ?>
-    <form action="" method="post">
-        <table bgcolor="#33d9b2" align="center" style="width: 60%;">
+        ?>
+        <form action="" method="post">
+            <table align="center" width="50%">
                 <tr>
-                    <td  colspan=2 bgcolor="#218c74" style="color:white" align="center">TÍNH TIỀN KARAOKE</td>
+                    <th colspan="2">TÍNH TIỀN KARAOKE</th>
                 </tr>
                 <tr>
-                    <td>Giờ bắt đầu: </td>
+                    <td width="35%">Giờ bắt đầu:</td>
                     <td>
-                        <input type="text" name="batdau" value="<?php if(isset($batdau)) {echo $batdau;} ?>">(h)
+                        <input style="width: 80%" type="text" name="gbd" value="<?php echo $gbd ?? "" ?>">
                     </td>
                 </tr>
                 <tr>
-                    <td>Giờ kết thúc: </td>
+                    <td>Giờ kết thúc:</td>
                     <td>
-                        <input type="text" name="ketthuc" value="<?php if(isset($ketthuc)){ echo $ketthuc;} ?>">(h)
+                        <input style="width: 80%" type="text" name="gkt" value="<?php echo $gkt ?? "" ?>">
                     </td>
                 </tr>
                 <tr>
-                    <td>Tiền thanh toán: </td>
+                    <td>Tiền Thanh toán:</td>
                     <td>
-                        <input type="text" name="tienthanhtoan" style="background-color: #ffda79;" readonly value="<?php if(isset($tienthanhtoan)){ echo $tienthanhtoan;} ?>">(VNĐ)
+                        <input style="width: 80%; background-color: #fefda5" type="text" name="ttt" value="<?php echo $ttt ?? "" ?>" readonly>
                     </td>
                 </tr>
-                <tr align="center">
-                    <td colspan="2">
-                        <input type="submit" style="background-color: #218c74; font-size: 20px;" name="submit" value="Tính tiền">
+                <tr>
+                    <td align="center" colspan="2">
+                        <input style="background-color: #e4dfdc;" align="center" type="submit" name="submit" value="Tính tiền">
+                        <input style="background-color: #e4dfdc;" align="center" type="submit" name="reset" value="Reset">
                     </td>
                 </tr>
-
-        </table>
-    </form>
+            </table>
+        </form>
     </div>
 </div>
 <?php include('../admin/partials/footer.php'); ?>

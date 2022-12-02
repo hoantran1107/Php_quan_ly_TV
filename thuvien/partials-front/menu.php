@@ -12,12 +12,25 @@ include('login-check-sv.php');
 </head>
 
 <body>
+    <!-- tien te -->
+    <?php
+    if (!function_exists('currency_format')) {
+        function formamt_price($priceFloat)
+        {
+            $symbol = ' vnđ';
+            $symbol_thousand = '.';
+            $decimal_place = 0;
+            $price = number_format($priceFloat, $decimal_place, '', $symbol_thousand);
+            return $price . $symbol;
+        }
+    }
+    ?>
     <!-- Navbar starts here -->
     <section class="navbar">
         <div class="container">
             <div class="logo">
                 <a href="#" title="Logo">
-                    <img src="images/logo.png" height="auto" class="img-responsive" alt="Library Logo">
+                    <img src="images/Logo.png" class="img-logo img-responsive" alt="Library Logo">
                 </a>
             </div>
 
@@ -36,36 +49,35 @@ include('login-check-sv.php');
                         Thông báo hạn thẻ ... 
                      -->
                     <li>
-                        <?php 
+                        <?php
                         if (isset($_SESSION['usersv']))
-                      echo "<a href=".SITEURL."logout-sv.php>Đăng xuất</a>";
-                       if(!isset($_SESSION['usersv'])) {
-    
-                       echo "<a href='".SITEURL."login-sv.php'>Đăng nhập</a>";
-                       }
+                            echo "<a href=" . SITEURL . "logout-sv.php>Đăng xuất</a>";
+                        if (!isset($_SESSION['usersv'])) {
+
+                            echo "<a href='" . SITEURL . "login-sv.php'>Đăng nhập</a>";
+                        }
                         ?>
                     </li>
                     <?php
-                    if(isset($_SESSION['usersv']))
-                    {
-                    $id=$_SESSION['usersv'];                
-                    $sql="SELECT * FROM sinh_vien WHERE ma_sv='$id' ";
-                    $res= mysqli_query($conn, $sql);
-                    $count=mysqli_num_rows($res);
-                    if($count==1){
-                        $row=mysqli_fetch_assoc($res);
-                        $ten=$row['hoten_sv'];
-                    }
-                    echo "<li>".$ten."</li>";
-                    echo "<li>
-                    <a href=".SITEURL."detail.php?sv_id=".$id."><img src='images/girl.png' title='Xem chi tiết thông tin sinh viên' width='4%' height='auto'></a>
+                    if (isset($_SESSION['usersv'])) {
+                        $id = $_SESSION['usersv'];
+                        $sql = "SELECT * FROM sinh_vien WHERE ma_sv='$id' ";
+                        $res = mysqli_query($conn, $sql);
+                        $count = mysqli_num_rows($res);
+                        if ($count == 1) {
+                            $row = mysqli_fetch_assoc($res);
+                            $ten = $row['hoten_sv'];
+                        }
+                        echo "<li>" . $ten . "</li>";
+                        echo "<li>
+                    <a href=" . SITEURL . "detail.php?sv_id=" . $id . "><img src='images/girl.png' title='Xem chi tiết thông tin sinh viên' width='4%' height='auto'></a>
                 </li>
                 <li>
-                    <a href=".SITEURL."phieumuon.php?sv_id=".$id."><img src='images/backpack.png' title='Xem chi tiết phiếu mượn' width='4%' height='auto'></a>
+                    <a href=" . SITEURL . "phieumuon.php?sv_id=" . $id . "><img src='images/backpack.png' title='Xem chi tiết phiếu mượn' width='4%' height='auto'></a>
                 </li>";
-                   }
+                    }
                     ?>
-                
+
                 </ul>
             </div>
             <div class="clearfix"></div>

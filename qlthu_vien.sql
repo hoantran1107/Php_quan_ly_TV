@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 06, 2021 at 04:29 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.30
+-- Host: localhost:3306
+-- Generation Time: Dec 02, 2022 at 04:16 AM
+-- Server version: 5.7.33
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `quan_li_thu_vien`
+-- Database: `qlthu_vien`
 --
 
 -- --------------------------------------------------------
@@ -56,10 +56,9 @@ CREATE TABLE `nhan_vien` (
 --
 
 INSERT INTO `nhan_vien` (`ma_nv`, `hoten_nv`, `diachi_nv`, `sdt_nv`, `cmnd_nv`, `gioitinh_nv`, `anh_nv`, `email_nv`, `pwd`) VALUES
-('001', 'Trần Lê Ánh Tuyết', 'Nha Trang, Khánh Hòa', '0234567876', '156234567897', 1, 'Admin_413.png', 'tuyet@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-('002', 'Trần Văn Tiến', 'Vạn Ninh, Khánh Hòa', '028765345', '152345678987', 0, 'Admin_179.png', 'tranvantien@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-('003', 'Nguyễn Thị Thắm', 'Ninh Hòa', '098638332', '224567894', 1, 'Admin_326.png', 'nhung.lthihong@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-('611', 'Lê Thị Hồng Nhung', 'Khánh Hòa', '0987622782', '225698817', 1, 'Admin_71.jpg', 'hongnhung14421@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055');
+('001', 'Phù Quốc Khánh', 'Nha Trang', '0234567876', '156234567897', 0, 'Admin_368.png', 'quockhanh@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
+('002', 'Trần Khải Hoàn', 'Vạn Ninh, Khánh Hòa', '028765345', '152345678987', 0, 'Admin_179.png', 'khaihoan@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
+('611', 'Nguyễn Phan Hữu Thọ', 'Khánh Hòa', '0987622782', '225698817', 0, '1.jpg', 'huutho1408@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055');
 
 -- --------------------------------------------------------
 
@@ -106,22 +105,30 @@ CREATE TABLE `phieu_muon` (
   `soluong_muon` int(11) NOT NULL,
   `ma_sach` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ma_sv` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `active` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL
+  `active` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tra_sach` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ngay_tra` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `phieu_muon`
 --
 
-INSERT INTO `phieu_muon` (`ma_pm`, `ngay_muon`, `soluong_muon`, `ma_sach`, `ma_sv`, `active`) VALUES
-(2, '2021-10-25', 1, 'ĐRPN', '003', 'Yes'),
-(8, '2021-10-29', 1, 'NCH', '60678345', 'Yes'),
-(11, '2021-10-29', 1, 'NCH', '63131063', 'Yes'),
-(13, '2021-11-02', 1, 'BHTQ', '61456788', 'Yes'),
-(17, '2021-11-05', 1, 'CBCX', '61123456', 'Yes'),
-(20, '2021-11-05', 1, 'DMPL', '61123456', 'Yes'),
-(21, '2021-11-05', 2, 'CCBH', '61123456', 'Yes'),
-(22, '2021-11-05', 3, 'SD', '61123456', 'Yes');
+INSERT INTO `phieu_muon` (`ma_pm`, `ngay_muon`, `soluong_muon`, `ma_sach`, `ma_sv`, `active`, `tra_sach`, `ngay_tra`) VALUES
+(2, '2021-10-25', 1, 'ĐRPN', '003', 'Yes', 'Yes', '2022-11-26'),
+(8, '2021-10-29', 1, 'NCH', '60678345', 'Yes', 'Yes', '2022-11-26'),
+(11, '2021-10-29', 1, 'NCH', '63131063', 'Yes', 'Yes', '2022-11-26'),
+(13, '2021-11-02', 1, 'BHTQ', '61456788', 'Yes', 'Yes', '2022-11-26'),
+(17, '2021-11-05', 1, 'CBCX', '61123456', 'Yes', 'Yes', '2022-11-26'),
+(20, '2021-11-05', 1, 'DMPL', '61123456', 'Yes', 'Yes', '2022-11-26'),
+(21, '2021-11-05', 2, 'CCBH', '61123456', 'Yes', 'Yes', '2022-11-26'),
+(22, '2021-11-05', 3, 'SD', '61123456', 'Yes', 'Yes', '2022-11-26'),
+(36, '2022-11-26', 3, '5PDC', '61456788', 'Yes', 'Yes', '2022-11-26'),
+(37, '2022-11-26', 1, 'ĐB', '61456788', 'Yes', 'Yes', '2022-11-26'),
+(38, '2022-11-26', 4, '5PDC', '61123456', 'Yes', 'Yes', '2022-11-26'),
+(39, '2022-11-26', 2, '5PDC', '61123456', 'Yes', 'Yes', '2022-11-26'),
+(40, '2022-11-26', 4, '5PDC', '61123456', 'Yes', 'Yes', '2022-01-01'),
+(42, '2022-11-26', 3, 'BHTQ', '61123456', 'Yes', 'Yes', '2022-11-26');
 
 -- --------------------------------------------------------
 
@@ -149,13 +156,13 @@ CREATE TABLE `sach` (
 --
 
 INSERT INTO `sach` (`ma_sach`, `ten_sach`, `soluong`, `sotrang`, `gia_sach`, `namxb`, `ma_nxb`, `ma_tl`, `ma_tg`, `tinhtrang`, `tomtat`, `anh_sach`) VALUES
-('5PDC', '5 Phút Dạy Con', 23, 183, '77000', 2020, 'PN', 'MB', 'LHJ', 'Còn mới', '“Cha mẹ là cha mẹ, không phải người hầu”.', 'Book_847.jpg'),
+('5PDC', '5 Phút Dạy Con', 35, 183, '77000', 2020, 'PN', 'MB', 'LHJ', 'Còn mới', '“Cha mẹ là cha mẹ, không phải người hầu”.', 'Book_847.jpg'),
 ('BHTQ', 'Bà Huyện Thanh Quan', 13, 97, '145000', 2015, 'KD', 'VHTD', 'QC', 'Còn mới', 'Thơ văn và cuộc đời Bà Huyện Thanh Quan', 'Book_974.jpg'),
 ('CBCX', 'Cân bằng cảm xúc, cả lúc bão giông', 6, 336, '96000', 2020, 'TG', 'KNS', 'RN', 'Còn mới', 'Học được cách cân bằng cảm xúc không đơn giản', 'Book_504.jpg'),
 ('CCBH', 'Những chú chó bán hàng', 56, 356, '89700', 2018, 'NXBT', 'KT', 'BS', 'Còn mới', 'Làm bùng nổ thu nhập mà không cần tấn công', 'Book_876.jpg'),
 ('CPL', 'Những cuộc phiêu lưu của Tom Sawyer ', 12, 860, '120000', 2018, 'VH', 'TT', 'MK', 'Còn mới', 'Là những cuộc phiêu lưu của thanh thiếu niên', 'Book_100.jpg'),
 ('DMPL', 'Dế mèn phiêu lưu kí', 9, 37, '43000', 1941, 'KD', 'STN', 'TH', 'Còn mới', 'Là những trang văn mẫu mực của văn học thiếu nhi', 'Book_593.jpg'),
-('ĐB', 'Đừng bán khi chưa được giá', 45, 296, '90000', 2019, 'CT', 'KT', 'JW', 'Còn mới', 'Là chiêu thức để tạo ra một công ty mà không cần tới bạn', 'Book_936.jpg'),
+('ĐB', 'Đừng bán khi chưa được giá', 43, 296, '90000', 2019, 'CT', 'KT', 'JW', 'Còn mới', 'Là chiêu thức để tạo ra một công ty mà không cần tới bạn', 'Book_936.jpg'),
 ('ĐRPN', 'Đất rừng phương nam', 2, 304, '80000', 1957, 'KD', 'STN', 'ĐG', 'Còn mới', 'Những trang sách sinh động và chân thực về thiên nhiên và con người nơi đây', 'Book_586.jpg'),
 ('HD', 'Vũ trụ trong vỏ hạt dẻ', 4, 254, '77000', 2018, 'NXBT', 'STH', 'STE', 'Còn mới', 'Lòng khát khao khám phá luôn là động lực cho trí sáng tạo ', 'Book_635.jpg'),
 ('LPT', 'Thơ ngụ ngôn La Fontaine', 32, 75, '54000', 2017, 'TG', 'THO', 'LPT', 'Hơi cũ', 'Ngôn ngữ dịch linh hoạt những ngụ ngôn của La Fontaine', 'Book_205.jpg'),
@@ -202,6 +209,7 @@ CREATE TABLE `sinh_vien` (
 INSERT INTO `sinh_vien` (`ma_sv`, `hoten_sv`, `gioitinh_sv`, `ngaysinh_sv`, `diachi_sv`, `khoa`, `email`, `pwd_sv`) VALUES
 ('003', 'Trịnh Văn Toàn', 'Nam', '2000-03-04', 'Nha Trang, Khánh Hòa', 'Kĩ Thuật Giao Thông', 'toan@gmail.com', ''),
 ('004', 'Lý Văn Lịch', 'Nam', '2000-03-03', 'Đà Nẵng', 'KTTC', 'tranvantien@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
+('1234', 'Trần Khải Hoàn', 'Nam', '2022-11-25', 'Khánh hòa', 'Cntt', '', '47ac81db4f90a789ef6a3d1f13dea4f1'),
 ('60123123', 'Nguyễn Văn Am', 'Nam', '2000-01-01', 'Khánh Hòa', 'Cơ khí', '', '81dc9bdb52d04dc20036dbd8313ed055'),
 ('60200200', 'Nguyễn Văn Chuẩn', 'Nam', '2000-05-05', 'Hà Nội', 'Cơ Khí', 'chuan@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
 ('60678345', 'Trần Thị Mai Hạ', 'Nữ', '2000-12-03', 'Đà Nẵng', 'Kỹ thuật giao thông', 'nhung.lthihong@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
@@ -315,13 +323,13 @@ CREATE TABLE `the_thu_vien` (
 --
 
 INSERT INTO `the_thu_vien` (`ma_the`, `thoigiancap`, `hsd`, `ma_sv`, `active`) VALUES
-(2, '2021-10-29', 3, '004', 'No'),
-(3, '2021-10-29', 3, '61123456', 'No'),
 (4, '2021-06-29', 3, '60678345', 'Yes'),
 (8, '2021-10-29', 3, '63131063', 'Yes'),
-(9, '2021-11-02', 3, '61456788', 'Yes'),
-(10, '2021-11-03', 12, '61123456', 'Yes'),
-(11, '2021-11-05', 3, '60200200', 'Yes');
+(14, '2022-11-25', 3, '1234', 'Yes'),
+(15, '2022-11-26', 3, '61123456', 'Yes'),
+(16, '2022-11-26', 3, '60200200', 'Yes'),
+(17, '2022-11-26', 3, '61456788', 'Yes'),
+(20, '2022-11-26', 3, '004', 'Yes');
 
 --
 -- Indexes for dumped tables
@@ -396,13 +404,13 @@ ALTER TABLE `the_thu_vien`
 -- AUTO_INCREMENT for table `phieu_muon`
 --
 ALTER TABLE `phieu_muon`
-  MODIFY `ma_pm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ma_pm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `the_thu_vien`
 --
 ALTER TABLE `the_thu_vien`
-  MODIFY `ma_the` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ma_the` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables

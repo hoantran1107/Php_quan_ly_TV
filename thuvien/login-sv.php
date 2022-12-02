@@ -11,7 +11,6 @@
     <div class="login">
         <section class="book-search">
             <div class="container">
-                <h2 class="text-center text-white">Đăng nhập</h2>
 
                 <br>
                 <?php if (isset($_SESSION['login'])) {
@@ -32,6 +31,7 @@
                 <!-- Login Form Starts Here -->
                 <form action="" method="POST" class="order">
                     <fieldset>
+                        <h2 class="text-center text-white">Đăng nhập</h2>
                         <div class="order-label">Mã số sinh viên:</div>
                         <input type="text" name="ma_sv" class="input-responsive" placeholder="VD: 61234567"><br><br>
                         <div class="order-label">Mật khẩu:</div>
@@ -40,14 +40,14 @@
                         <label>Duy trì đăng nhập</label><br><br>
                         <input type="submit" name="submit" value="Đăng nhập" class="btn btn-primary">
                         <a class="btn btn-primary text-center" href="<?php echo SITEURL."resetpass/resetpass.php"; ?>">Quên mật khẩu</a><br><br>
-                       
+                        <h3 class="text-center text-white">Nếu chưa có tài khoản, hãy <a href="<?php echo SITEURL; ?>signin-sv.php">Đăng ký</a></h3>
+                <!-- chuyển sang trang đăng kí -->
                     </fieldset>
                 </form>
                 <!-- Login Form Ends Here -->
     
-                <h3 class="text-center text-white">Nếu chưa có tài khoản, hãy đăng kí!</h3><br>
-                <!-- chuyển sang trang đăng kí -->
-                <div align="center"><a class="btn btn-primary text-center" href="<?php echo SITEURL; ?>signin-sv.php">Đăng kí</a></div>
+                
+                <div align="center"></div>
             </div>
         </section>
     </div>

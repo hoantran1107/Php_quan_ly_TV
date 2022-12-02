@@ -57,7 +57,7 @@
                 <th>Năm XB</th>
                 <th>Giá sách</th>
                 <th>Số lượng</th>
-                <th>Actions</th>
+                <th>Chức năng</th>
             </tr>
             <?php
             //phan trang

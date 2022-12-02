@@ -29,7 +29,7 @@ function timkiem($mangso,$so)
 
 function xuatmang($mang)
 {
-    if(isset($mang)) {print implode(", ", $mang);}
+    return implode(", ", $mang);
 }
 
 if(isset($_POST["submit"]))
@@ -37,51 +37,51 @@ if(isset($_POST["submit"]))
     $dayso = $_POST["dayso"];
     $so = $_POST["so"];
     $mangso = explode(",", $dayso);
+    $mang = xuatmang($mangso);
     $ketqua = timkiem($mangso,$so);
 }
 
 ?>
 
-    <form method="POST" action="" name="formtimkiem">
-        <table bgcolor="#f1f2f6" align="center" style="width: 60%;">
-            <tr bgcolor="#2ed573">
-                <th colspan="2">TÌM KIẾM</th>
-            </tr>
-            <tr>
-                <td>Nhập mảng</td>
-                <td><input type="text" name="dayso" value="<?php if (isset($_POST["dayso"])) {
-                                                                echo $_POST["dayso"];} ?> " >
-                </td>
-            </tr>
-            <tr>
-                <td>Nhập số cần tìm</td>
-                <td>
-                    <input type="text" width="30px" name="so" value="<?php if (isset($_POST["so"])) echo $_POST["so"]?>">
-                </td>
-            </tr>
-            <tr>
-                <td>  </td>
-                <td>
-                    <input type="submit" style="background-color: aquamarine; font-size: 20px;" name="submit" width="30px" value="Tìm kiếm">
-                </td>
-            </tr>
-            <tr>
-                <td>Mảng</td>
-                <td>
-                    <input type=text readonly value="<?php if(isset($mangso)) xuatmang($mangso); ?>">
-                </td>
-            </tr>
-            <tr>
-                <td>Kết quả tìm kiếm</td>
-                <td>
-                    <input type=text style="background-color: bisque; color: red" value="<?php if(isset($so) && isset($mangso)) echo timkiem($mangso,$so); ?>">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" readonly bgcolor="#7bed9f">(Các phần tử trong mảng sẽ cách nhau dấu ",")</td>
-            </tr>
-        </table>
-    </form>
+<form method="POST" action="" name="formtimkiem">
+    <table bgcolor="#d1ded4" align="center" style="width: 50%;">
+        <tr style="color: #f3eef8; font-size: 20px" bgcolor="#359999">
+            <th colspan="2">TÌM KIẾM</th>
+        </tr>
+        <tr>
+            <td>Nhập mảng</td>
+            <td><input style="width: 80%" type="text" name="dayso" value="<?php echo $dayso ?? ""?> " >
+            </td>
+        </tr>
+        <tr>
+            <td>Nhập số cần tìm</td>
+            <td>
+                <input type="text" style="width: 40px" name="so" value="<?php if (isset($_POST["so"])) echo $_POST["so"]?>">
+            </td>
+        </tr>
+        <tr>
+            <td>  </td>
+            <td>
+                <input type="submit" style="background-color: #96caff; font-size: 20px;" name="submit" width="30px" value="Tìm kiếm">
+            </td>
+        </tr>
+        <tr>
+            <td>Mảng</td>
+            <td>
+                <input type=text readonly value="<?php echo $mang ?? "" ?>">
+            </td>
+        </tr>
+        <tr>
+            <td>Kết quả tìm kiếm</td>
+            <td>
+                <input type=text style="width: 80%; background-color: #cafffb; color: red" value="<?php echo $ketqua ?? "" ?>">
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2" readonly bgcolor="#76d1cf">(Các phần tử trong mảng sẽ cách nhau dấu ",")</td>
+        </tr>
+    </table>
+</form>
     </div>
 </div>
 <?php include('../admin/partials/footer.php'); ?>

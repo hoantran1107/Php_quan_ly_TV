@@ -53,7 +53,7 @@
                     <th>Số điện thoại</th>
                     <th>Giới tính</th>
                     <th>Email</th>
-                    <th>Actions</th>
+                    <th>Chức năng</th>
                 </tr>
                 <?php
                 //phan trang

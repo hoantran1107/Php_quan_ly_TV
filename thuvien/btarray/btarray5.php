@@ -21,71 +21,88 @@ function thaythe($mangso,$canthaythe,$thaythe)
     foreach ($mangso as $key => &$value) {
         if($canthaythe==$value) {
             $value=$thaythe;
-            #var_dump($value);
-            #var_dump($thaythe);
         }
     }
-    #var_dump($mangso);
     return $mangso;
+}
+function xuat_mang($mang)
+{
+    return implode(' , ',$mang);
 }
 if(isset($_POST['submit']))
 {
-    $dayso=$_POST['dayso'];
-    $mangso=explode(",",$dayso);
+    $dayso = $_POST['dayso'];
     $canthaythe=$_POST['canthaythe'];
     $thaythe=$_POST['thaythe'];
-    $mangmoi=thaythe($mangso,$canthaythe,$thaythe);
+    if($dayso != "" and  is_numeric($canthaythe)  and is_numeric($thaythe)){
+        $dayso=$_POST['dayso'];
+        $mangso=explode(",",$dayso);
+        $mangmoi=thaythe($mangso,$canthaythe,$thaythe);
+        $mang_cu = xuat_mang($mangso);
+        $mang_moi = xuat_mang($mangmoi);
+    }
+    else {
+        if ($dayso == ""){
+            $dayso = "Hãy nhập dãy số";
+        }
+        if (!is_numeric($canthaythe)){
+            $thaythe = "Hãy nhập số";
+        }
+        if (!is_numeric($thaythe)){
+            $canthaythe = "Hãy nhập sô";
+        }
+    }
 }
 
 
 ?>
 
-    <form method="post" action="" name="formthaythe">
-        <table bgcolor="" align="center" style="width: 60%;">
-            <tr bgcolor="#c44569">
-                <th colspan="2">THAY THẾ</th>
-            </tr>
-            <tr style="background-color:#f8a5c2">
-                <td>Nhập các phần tử</td>
-                <td>
-                    <input type="text" name="dayso" value="<?php if (isset($dayso)) { echo $dayso; } ?>">
-                </td>
-            </tr>
-            <tr style="background-color:#f8a5c2">
-                <td>Giá trị cần thay thế</td>
-                <td>
-                    <input type="text" name="canthaythe" value="<?php if (isset($canthaythe)) { echo $canthaythe;} ?>">
-                </td>
-            </tr>
-            <tr style="background-color:#f8a5c2">
-                <td>Giá trị thay thế</td>
-                <td>
-                    <input type="text" name="thaythe" value="<?php if (isset($thaythe)) { echo $thaythe; } ?>">
-                </td>
-            </tr>
-            <tr style="background-color:#f8a5c2">
-                <td> </td>
-                <td>
-                    <input type="submit" name="submit" style="background-color: #c44569; font-size:25px" value="Thay thế">
-                </td>
-            </tr>
-            <tr>
-                <td>Mảng cũ</td>
-                <td>
-                    <input type="text" readonly style="background-color:#ea8685; color:white" value="<?php if(isset($mangso)) print implode('  ',$mangso); ?>">
-                </td>
-            </tr>
-            <tr>
-                <td>Mảng sau khi thay thế</td>
-                <td>
-                    <input type="text" readonly style="background-color:#ea8685; color:white" value="<?php if(isset($_POST['submit'])) print implode('  ',$mangmoi); ?>">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">(<strong style="color: red;">Ghi chú:</strong> Các phần tử trong mảng sẽ cách nhau bằng dấu ",")</td>
-            </tr>
-        </table>
-    </form>
+<form method="post" action="" name="formthaythe">
+    <table bgcolor="" align="center" style="width: 60%;">
+        <tr bgcolor="#a3096f">
+            <th style="color: white; font-size: 20px" colspan="2">THAY THẾ</th>
+        </tr>
+        <tr style="background-color:#fee0f0">
+            <td width="30%">Nhập các phần tử</td>
+            <td>
+                <input type="text" style="width: 80%" name="dayso" value="<?php echo $dayso ?? ""?>">
+            </td>
+        </tr>
+        <tr style="background-color:#fee0f0">
+            <td>Giá trị cần thay thế</td>
+            <td>
+                <input  type="text" name="canthaythe" value="<?php echo $canthaythe ?? ""?>">
+            </td>
+        </tr>
+        <tr style="background-color:#fee0f0">
+            <td>Giá trị thay thế</td>
+            <td>
+                <input type="text" name="thaythe" value="<?php echo $thaythe ?? "" ?>">
+            </td>
+        </tr>
+        <tr style="background-color:#fee0f0">
+            <td> </td>
+            <td>
+                <input type="submit" name="submit" style="background-color: #c44569; font-size:25px" value="Thay thế">
+            </td>
+        </tr>
+        <tr bgcolor="#fff4ff">
+            <td>Mảng cũ</td>
+            <td>
+                <input type="text" readonly style="background-color:#ea8685; color:white" value="<?php echo $mang_cu ?? ""?>">
+            </td>
+        </tr>
+        <tr bgcolor="#fff4ff">
+            <td>Mảng sau khi thay thế</td>
+            <td>
+                <input type="text" readonly style="background-color:#ea8685; color:white" value="<?php echo $mang_moi ?? ""?>">
+            </td>
+        </tr>
+        <tr bgcolor="#fff4ff">
+            <td colspan="2">(<strong style="color: red;">Ghi chú:</strong> Các phần tử trong mảng sẽ cách nhau bằng dấu ",")</td>
+        </tr>
+    </table>
+</form>
     </div>
 </div>
 <?php include('../admin/partials/footer.php'); ?>

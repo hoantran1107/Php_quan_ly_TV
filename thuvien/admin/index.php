@@ -1,4 +1,5 @@
 <?php include('partials/menu.php'); ?>
+
 <!-- Main content section starts -->
 <div class="menu main-content">
     <div class="wrapper">
@@ -127,16 +128,30 @@
            $soluong = json_encode($info1);
        }
         ?>
+        <style>
+            table{
+                margin-top: 20%;
+                background-color: #fff
+            }
+            td{
+                width: 25%;
+            
+            }
+            input[type=date]{
+                width: 90%;
+            }
+        </style>
         <form action="" method="post">
-            <table>
+            <table width=50%>
+                <tr><td colspan="2"><h2>Thống kê sách mượn</h2></td></tr>
                 <tr>
-                    <td>Ngày bắt đầu</td>
+                    <td>Ngày bắt đầu:</td>
                     <td><input type="date" name="start" value="<?php echo isset($ngaybd)  ?$ngaybd : ""?>"></td>
+                    <td>Ngày kết thúc:</td>
+                    <td><input type="date" name="end" value="<?php echo isset($ngaykt)  ?$ngaykt : ""?>" ></td>
                 </tr>
                 <tr>
-                    <td>Ngày kết thúc</td>
-                    <td><input type="date" name="end" value="<?php echo isset($ngaykt)  ?$ngaykt : ""?>" </td>
-                    <td><input type="submit" name="submit" height="100px"></td>
+                    <td><button style="border: none; cursor: pointer; font-size: 18px" type="submit" name="submit" class="btn-secondary">Báo cáo</button></td>
                 </tr>
                
             </table>

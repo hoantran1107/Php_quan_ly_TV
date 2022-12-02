@@ -12,23 +12,19 @@
 
 <?php
 //hiện thị thông báo đăng nhập thành công và các thông báo khác 1 lần
-if(isset($_SESSION['muonsach']))
-{
+if (isset($_SESSION['muonsach'])) {
     echo $_SESSION['muonsach'];
     unset($_SESSION['muonsach']);
 }
-if(isset($_SESSION['login']))
-{
+if (isset($_SESSION['login'])) {
     echo $_SESSION['login'];
     unset($_SESSION['login']);
 }
-if(isset($_SESSION['the']))
-{
+if (isset($_SESSION['the'])) {
     echo $_SESSION['the'];
     unset($_SESSION['the']);
 }
-if(isset($_SESSION['update-sv']))
-{
+if (isset($_SESSION['update-sv'])) {
     echo $_SESSION['update-sv'];
     unset($_SESSION['update-sv']);
 }
@@ -99,21 +95,19 @@ if(isset($_SESSION['update-sv']))
                 <div class="book-menu-box">
                     <div class="book-menu-img">
                         <?php
-                        if($tenanh=="")
-                        {
+                        if ($tenanh == "") {
                             echo "<div class='error'>Khong co anh</div>";
-                        }
-                        else{
-                            ?>
+                        } else {
+                        ?>
                             <img src="<?php echo SITEURL; ?>images/book/<?php echo $tenanh; ?>" alt="Book menu" class="img-responsive img-curve">
-                            <?php
+                        <?php
                         }
                         ?>
                     </div>
 
                     <div class="book-menu-desc">
                         <h4><a href="<?php echo SITEURL; ?>detail-book.php?idsach=<?php echo $idsach; ?>"><?php echo $tensach; ?></a></h4>
-                        <p class="book-price"><?php echo $giasach; ?> VND</p>
+                        <p class="book-price"><?php echo formamt_price($giasach); ?></p>
                         <p class="book-detail"><?php echo $tomtat; ?></p><br>
                         <a href="<?php echo SITEURL; ?>muonsach.php?book_id=<?php echo $idsach; ?>" class="btn btn-primary">Mượn sách</a>
                     </div>

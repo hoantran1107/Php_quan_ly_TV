@@ -17,75 +17,81 @@
         <br /><br /><br />
         <?php
 
-function swap(&$k, &$key) {
-    $tam=$k;
-    $k=$key;
-    $key=$tam;
-}
-function sapxep(&$mangso,$tang)
+function swap(&$k, &$key)
 {
-    foreach ($mangso as $key => &$value) {
-        foreach ($mangso as $k => &$v) {
-            if($v<$value && $tang==true)
-            {
-                swap($v,$value);
+    $tam = $k;
+    $k = $key;
+    $key = $tam;
+}
+
+function sapxep(&$mangso, $tang)
+{
+    for ($i = 0; $i < count($mangso) - 1; $i++) {
+        for ($j = $i + 1; $j < count($mangso); $j++) {
+            if ($mangso[$i] > $mangso[$j] and $tang == true) {
+                swap($mangso[$i], $mangso[$j]);
             }
-            if($v>$value && $tang==false){
-                swap($value,$v);
+            elseif ($mangso[$i] < $mangso[$j] and $tang == false){
+                swap($mangso[$i], $mangso[$j]);
             }
         }
     }
-    #var_dump($mangso);
-    return $mangso;
+    return implode(', ',$mangso);
 }
 
-if(isset($_POST['submit']))
-{
-    $dayso=$_POST['dayso'];
-    $mangso=explode(",",$dayso);
-    $mangtang = sapxep($mangso,true);
-    $manggiam=sapxep($mangso,false);
+if (isset($_POST['submit'])) {
+    $dayso = $_POST['dayso'];
+    $mangso = explode(",", $dayso);
+    $mangtang = sapxep($mangso, true);
+    $manggiam = sapxep($mangso, false);
 }
 
 ?>
 
-    <form action="" method="POST">
-        <table align="center" style="background-color: #63cdda;width: 60%;">
-            <tr>
-                <th colspan="2" align="center" style="background-color: #3dc1d3;">SẮP XẾP MẢNG</th>
-            </tr>
-            <tr>
-                <td>Nhập mảng</td>
-                <td>
-                    <input type="text" name="dayso" value="<?php if (isset($dayso)) { echo $dayso;}?>">
-                </td>
-            </tr>
-            <tr>
-                <td> </td>
-                <td>
-                    <input style="font-size: 15px;color: darkslategrey; background-color: aquamarine;" type="submit" name="submit" value="Sắp xếp tăng/giảm"><b style="color: red">(*)</b>
-                </td>
-            </tr>
-            <tr style="background-color: #2bcbba;">
-                <td style="color: red;">Sau khi sắp xếp</td><td></td>
-            </tr>
-            <tr style="background-color: #2bcbba;">
-                <td>Tăng dần</td>
-                <td>
-                    <input type="text" value="<?php if(isset($mangtang)) print implode(', ',$mangtang) ?>">
-                </td>
-            </tr>
-            <tr style="background-color: #2bcbba;">
-                <td>Giảm dần</td>
-                <td>
-                    <input type="text" value="<?php if(isset($manggiam)) print implode(', ',$manggiam) ?>">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2"><b>(*)</b> Các số được nhập cách nhau bằng dấu ","</td>
-            </tr>
-        </table>
-    </form>
+<form action="" method="POST">
+    <table align="center" style="background-color: #d1ded4;width: 50%;">
+        <tr>
+            <th colspan="2" align="center" style="background-color: #319b97; color: white; font-size: 20px">SẮP XẾP
+                MẢNG
+            </th>
+        </tr>
+        <tr>
+            <td>Nhập mảng</td>
+            <td>
+                <input type="text" style="width: 80%" name="dayso" value="<?php echo $dayso ?? "" ?>"><b
+                        style="color: red">(*)</b>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <input style="font-size: 15px;color: darkslategrey; background-color: white" type="submit" name="submit"
+                       value="Sắp xếp tăng/giảm">
+            </td>
+        </tr>
+        <tr style="background-color: #cbe6e6;">
+            <td style="color: red;">Sau khi sắp xếp</td>
+            <td></td>
+        </tr>
+        <tr style="background-color: #cbe6e6;">
+            <td>Tăng dần</td>
+            <td>
+                <input type="text" style="background-color: #c9fcfb"
+                       value="<?php echo $mangtang ?? "" ?>" readonly>
+            </td>
+        </tr>
+        <tr style="background-color: #cbe6e6;">
+            <td>Giảm dần</td>
+            <td>
+                <input type="text" style="background-color: #c9fcfb"
+                       value="<?php echo $manggiam ?? "" ?>" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2"><b style="color: red">(*)</b> Các số được nhập cách nhau bằng dấu ","</td>
+        </tr>
+    </table>
+</form>
     </div>
 </div>
 <?php include('../admin/partials/footer.php'); ?>

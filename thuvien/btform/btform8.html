@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="../css/admin.css">
     <link rel="stylesheet" href="../btform/style1.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        table {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
     <!-- Menu section starts -->
@@ -35,71 +40,74 @@
           <a href="btform3.php" class="btn-primary">Bài 3</a>
           <a href="btform4.php" class="btn-primary">Bài 4</a>
           <a href="btform5.php" class="btn-primary">Bài 5</a>
-          <a href="pheptinh.php" class="btn-primary">Bài 6+7</a>
+          <a href="trangnhaplieu.php" class="btn-primary">Bài 6</a>
+          <a href="bt7_trangnhaplieu.php" class="btn-primary">Bài 6</a>
           <a href="btform8.html" class="btn-primary">Bài 8</a>
+          <a href="bt9_index.php" class="btn-primary">Bài 9</a>
   
           <br /><br /><br />
-          <form action="config.php" method="POST" style="border: 1px solid #84817a; width: 70%;">
-            <table style="width: 100%;">
-              <th colspan="2">Enter your information</th>
-              <tr>
-                <td>Full name: </td>
-                <td>
-                  <input type="text" name="ten">
-                </td>
-              </tr>
-              <tr>
-                <td>Address: </td>
-                <td><input type="text" name="diachi"></td>
-              </tr>
-              <tr>
-                <td>Phone: </td>
-                <td>
-                  <input type="text" name="dienthoai">
-                </td>
-              </tr>
-              <tr>
-                <td>Gender: </td>
-                <td>
-                  <input type="radio" name="gioitinh" value="Nam" checked> Nam
-                  <input type="radio" name="gioitinh" value="Nu"> Nữ
-                </td>
-              </tr>
-              <tr>
-                <td>Country: </td>
-                <td>
-                  <select name="quocgia">
-                    <option value="Việt Nam" selected>Việt Nam</option>
-                    <option value="Mỹ">Mỹ</option>
-                    <option value="Hàn Quốc">Hàn Quốc</option>
-                  </select>
-                </td>
-              </tr>
-              <tr>
-                <td>Study: </td>
-                <td>
-                  <input type="checkbox" value="PHP & MySQL" name="hocvan" checked> PHP & MySQL
-                  <input type="checkbox" value="ASP.NET" name="hocvan"> ASP.NET
-                  <input type="checkbox" value="CCNA" name="hocvan"> CCNA
-                  <input type="checkbox" value="Security+" name="hocvan"> Security+
-                </td>
-              </tr>
-              <tr>
-                <td>Note: </td>
-                <td>
-                  <textarea name="note" rows="5"></textarea>
-                </td>
-              </tr>
-              <tr>
-                <td>     </td>
-                <td>
-                  <input type="submit" name="submit" value="Gửi">     
-                  <input type="reset" name="reset" value="Hủy">
-                </td>
-              </tr>
-
+          <form action="config.php" method="POST">
+            <table align="center">
+                <th colspan="2">Enter your information</th>
+                <tr>
+                    <td>Fullname:</td>
+                    <td>
+                        <input type="text" name="ten">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" name="diachi"></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td>
+                        <input type="text" name="dienthoai">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gender:</td>
+                    <td>
+                        <input type="radio" name="gioitinh" value="Nam" checked> Nam
+                        <input type="radio" name="gioitinh" value="Nu"> Nữ
+                    </td>
+                </tr>
+                <tr>
+                    <td>Country:</td>
+                    <td>
+                        <select name="quocgia">
+                            <option value="Việt Nam" selected>Việt Nam</option>
+                            <option value="Mỹ">Mỹ</option>
+                            <option value="Hàn Quốc">Hàn Quốc</option>
+                            <option value="Trung Quốc">Trung Quốc</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Study:</td>
+                    <td>
+                        <input type="checkbox" value="PHP & MySQL" name="hocvan" checked> PHP & MySQL
+                        <input type="checkbox" value="ASP.NET" name="hocvan"> ASP.NET
+                        <input type="checkbox" value="CCNA" name="hocvan"> CCNA
+                        <input type="checkbox" value="Security+" name="hocvan"> Security+
+                    </td>
+                </tr>
+                <tr>
+                    <td>Note:</td>
+                    <td>
+                        <textarea name="note" rows="5" cols="45"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="Gửi">
+                        <input type="reset" name="reset" value="Hủy">
+                    </td>
+                </tr>
+        
             </table>
-          </form>
+        </form>
       </div>
   </div>
   

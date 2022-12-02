@@ -15,15 +15,6 @@
     <div class="container">
         <h2 class="text-center">Danh mục sách</h2>
         <?php
-        //tien te
-    if (!function_exists('currency_format')) {
-        function currency_format($number, $suffix = 'VNĐ')
-        {
-            if (!empty($number)) {
-                return number_format($number, 0, ',', '.') . "{$suffix}";
-            }
-        }
-    }
         //phan trang
         $rowsPerPage = 6;
         if (!isset($_GET['page'])) {
@@ -51,20 +42,20 @@
                 $tomtat = $row['tomtat'];
                 $tenanh = $row['anh_sach'];
                 //
-                $sqlxb="SELECT ten_nxb FROM nha_xuat_ban WHERE ma_nxb='$ma_nxb' ";
-                $resxb=mysqli_query($conn, $sqlxb);
-                $rowxb=mysqli_fetch_assoc($resxb);
-                $ten_nxb=$rowxb['ten_nxb'];
+                $sqlxb = "SELECT ten_nxb FROM nha_xuat_ban WHERE ma_nxb='$ma_nxb' ";
+                $resxb = mysqli_query($conn, $sqlxb);
+                $rowxb = mysqli_fetch_assoc($resxb);
+                $ten_nxb = $rowxb['ten_nxb'];
                 //
-                $sqltg="SELECT ten_tg FROM tac_gia WHERE ma_tg='$ma_tg' ";
-                $restg=mysqli_query($conn, $sqltg);
-                $rowtg=mysqli_fetch_assoc($restg);
-                $ten_tg=$rowtg['ten_tg'];
+                $sqltg = "SELECT ten_tg FROM tac_gia WHERE ma_tg='$ma_tg' ";
+                $restg = mysqli_query($conn, $sqltg);
+                $rowtg = mysqli_fetch_assoc($restg);
+                $ten_tg = $rowtg['ten_tg'];
                 //
-                $sqltl="SELECT ten_tl FROM the_loai WHERE ma_tl='$ma_tl' ";
-                $restl=mysqli_query($conn, $sqltl);
-                $rowtl=mysqli_fetch_assoc($restl);
-                $ten_tl=$rowtl['ten_tl'];
+                $sqltl = "SELECT ten_tl FROM the_loai WHERE ma_tl='$ma_tl' ";
+                $restl = mysqli_query($conn, $sqltl);
+                $rowtl = mysqli_fetch_assoc($restl);
+                $ten_tl = $rowtl['ten_tl'];
         ?>
                 <div class="book-menu-box">
                     <div class="book-menu-img">
@@ -81,7 +72,7 @@
 
                     <div class="book-menu-desc">
                         <h4><a href="<?php echo SITEURL; ?>detail-book.php?idsach=<?php echo $idsach; ?>"><?php echo $tensach; ?></a></h4>
-                        <p class="book-price"><?php echo $giasach; ?> VND</p>
+                        <p class="book-price"><?php echo formamt_price($giasach); ?> </p>
                         <p class="book-detail"><?php echo $tomtat; ?></p><br>
                         <a href="<?php echo SITEURL; ?>muonsach.php?book_id=<?php echo $idsach; ?>" class="btn btn-primary">Mượn sách</a>
                     </div>

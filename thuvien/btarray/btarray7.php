@@ -18,17 +18,22 @@
         <?php
 
 if (isset($_POST['submit'])) {
-    $duonglich = $_POST['duonglich'];
-    $mangcan = array("Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm");
-    $mangchi = array("Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất");
-    $manghinh = array("hoi.png", "ty.png", "suu.png", "dan.png", "mao.png", "thin.png", "ti.png", "ngo.png", "mui.png", "than.png", "dau.png", "tuat.png");
-    $namtinh=$duonglich-3;
-    $can = $namtinh%10;
-    $chi = $namtinh%12;
-    $namal = $mangcan[$can];
-    $namal = $namal." ".$mangchi[$chi];
-    $hinh = $manghinh[$chi];
-    $hinhanh = "<img src='images/$hinh'>";
+    $nam = $_POST['duonglich'];
+    $mang_can = array("Quý", "Giáp", "Ất", "Bính", "Đinh", "Mậu", "Kỷ", "Canh", "Tân", "Nhâm");
+    $mang_chi = array("Hợi", "Tý", "Sửu", "Dần", "Mão", "Thìn", "Tỵ", "Ngọ", "Mùi", "Thân", "Dậu", "Tuất");
+    $mang_hinh = array("hoi.png", "ty.png", "suu.png", "dan.png", "mao.png", "thin.png", "ti.png", "ngo.png", "mui.png", "than.png", "dau.png", "tuat.png");
+    if((is_int($nam) || ctype_digit($nam)) && (int)$nam > 2){
+        $nam_tinh=$nam-3;
+        $can = $nam_tinh%10;
+        $chi = $nam_tinh%12;
+        $nam_al = $mang_can[$can];
+        $nam_al = $nam_al." ".$mang_chi[$chi];
+        $hinh = $mang_hinh[$chi];
+        $hinh_anh = "<img src='images/$hinh'>";
+    }
+    else{
+        $nam = "Năm là số nguyên dương > 2";
+    }
 }
 
 ?>
@@ -47,18 +52,18 @@ if (isset($_POST['submit'])) {
         </tr>
         <tr>
             <td>
-                <input type="text" style="width: 100%;" name="duonglich" value="<?php if(isset($duonglich)) echo $duonglich; ?>">
+                <input type="text" style="width: 100%;" name="duonglich" value="<?php echo $nam ?? "" ?>">
             </td>
             <td>
                 <input type="submit" style="background-color: #fab1a0; color: red;" name="submit" value="=>">
             </td>
             <td>
                 <input type="text" style="background-color: #fab1a0; color: red;" name="amlich" readonly
-                value="<?php if(isset($namal)) echo $namal;  ?>">
+                       value="<?php echo $nam_al ?? ""  ?>">
             </td>
         </tr>
         <tr>
-            <td colspan="3" align="center"><?php if(isset($hinhanh)) echo $hinhanh; ?></td>
+            <td colspan="3" align="center"><?php echo $hinh_anh ?? "" ?></td>
         </tr>
     </table>
 </form>

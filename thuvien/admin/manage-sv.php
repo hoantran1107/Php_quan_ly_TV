@@ -36,7 +36,7 @@
                 <th>Khoa</th>
                 <th>Giới tính</th>
                 <th>Email</th>
-                <th>Actions</th>
+                <th>Chức năng</th>
             </tr>
             <?php
             //phan trang

@@ -43,6 +43,7 @@
                 <th>Số lượng</th>
                 <th>Trạng thái</th>
                 <th>Trả sách</th>
+                <th>Chức năng</th>
             </tr>
             <?php
             //phan trang

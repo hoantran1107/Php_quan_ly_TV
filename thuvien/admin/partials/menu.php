@@ -12,11 +12,10 @@
     <link rel="stylesheet" href="../btform/style1.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- D -->
-  
 </head>
 <body>
     <!-- Menu section starts -->
-    <div class="menu text-center">
+    <div class="menu nav text-center">
         <div class="wrapper">
             <ul>
                 <li><a href="<?php echo SITEURL; ?>admin/index.php">TRANG CHỦ</a></li>

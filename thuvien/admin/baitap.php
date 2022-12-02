@@ -18,7 +18,7 @@
             $res2=mysqli_query($conn,$sql2);
             $count2=mysqli_num_rows($res2);
             ?>
-            <h1>8 CÂU</h1>
+            <h1>9 BÀI</h1>
             <br />
             PHP & FORM
         </div>
@@ -28,7 +28,7 @@
             $res3=mysqli_query($conn,$sql3);
             $count3=mysqli_num_rows($res3);
             ?>
-            <h1>7 CÂU</h1>
+            <h1>7 BÀI</h1>
             <br />
             MẢNG, CHUỖI & HÀM
         </div>

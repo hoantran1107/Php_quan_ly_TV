@@ -19,7 +19,7 @@ if (isset($_GET['book_id'])) {
     
     //Nếu như có thẻ rồi thì mới cho mình mượn sách
     if($counttv>0){
-        // Kiểm tra hạng sử dụng của thẻ 
+        // Kiểm tra hạn sử dụng của thẻ 
         $now = new DateTime();
         // var_dump($now);
         
